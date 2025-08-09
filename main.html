@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emma & Liam's Wedding</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        font-family: 'Open Sans', sans-serif;
+        background-color: #fff8f9;
+        color: #444;
+        line-height: 1.6;
+    }
+
+    header {
+        background: url('https://images.unsplash.com/photo-1529634820042-82f36a8e3391?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+        color: white;
+        text-align: center;
+        padding: 80px 20px;
+        position: relative;
+    }
+    header::after {
+        content: "";
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(0,0,0,0.4);
+    }
+    header h1 {
+        font-family: 'Great Vibes', cursive;
+        font-size: 4em;
+        margin: 0;
+        position: relative;
+        z-index: 1;
+    }
+    header p {
+        font-size: 1.2em;
+        margin-top: 10px;
+        position: relative;
+        z-index: 1;
+    }
+
+    section {
+        padding: 50px 20px;
+        max-width: 900px;
+        margin: auto;
+    }
+    section h2 {
+        font-family: 'Great Vibes', cursive;
+        font-size: 2.5em;
+        color: #d46b82;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    /* Countdown Timer */
+    #countdown {
+        font-size: 1.5em;
+        color: #d46b82;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    /* RSVP Button */
+    .button {
+        display: inline-block;
+        background: #d46b82;
+        color: white;
+        padding: 12px 25px;
+        border-radius: 8px;
+        text-decoration: none;
+        transition: background 0.3s ease;
+    }
+    .button:hover {
+        background: #b94c67;
+    }
+
+    /* Gallery */
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+    }
+    .gallery img {
+        width: 100%;
+        border-radius: 10px;
+        transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+        transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+        text-align: center;
+        background: #f28ca3;
+        color: white;
+        padding: 20px;
+        margin-top: 50px;
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Emma & Liam</h1>
+    <p>July 15, 2026 · Springfield</p>
+</header>
+
+<section>
+    <h2>Countdown to Our Big Day</h2>
+    <div id="countdown"></div>
+</section>
+
+<section>
+    <h2>Our Story</h2>
+    <p>We met in the most unexpected way... and here we are, ready to say "I do"! 
+    We can’t wait to celebrate this special day with our favorite people.</p>
+</section>
+
+<section>
+    <h2>Event Details</h2>
+    <p><strong>Date:</strong> July 15, 2026</p>
+    <p><strong>Venue:</strong> Rose Garden Hall, Springfield</p>
+    <p><strong>Time:</strong> Ceremony starts at 4:00 PM</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18..." width="100%" height="300" style="border:0;" allowfullscreen></iframe>
+</section>
+
+<section>
+    <h2>RSVP</h2>
+    <p>Please let us know if you’ll be able to attend by filling out the form below:</p>
+    <!-- Replace FORM_LINK_HERE with your actual Google Form embed link -->
+    <iframe src="FORM_LINK_HERE" width="100%" height="600" style="border:none;"></iframe>
+</section>
+
+<section>
+    <h2>Gallery</h2>
+    <div class="gallery">
+        <img src="https://images.unsplash.com/photo-1530023367847-a683933f4171?auto=format&fit=crop&w=800&q=80" alt="Engagement photo 1">
+        <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=800&q=80" alt="Engagement photo 2">
+        <img src="https://images.unsplash.com/photo-1529692236671-f1d6e0a1fa09?auto=format&fit=crop&w=800&q=80" alt="Engagement photo 3">
+    </div>
+</section>
+
+<section>
+    <h2>Gift Registry</h2>
+    <p>We are so grateful for your presence! If you’d like to give a gift, here are our registry links:</p>
+    <ul>
+        <li><a href="https://www.amazon.com" target="_blank">Amazon Registry</a></li>
+        <li><a href="https://www.target.com" target="_blank">Target Registry</a></li>
+    </ul>
+</section>
+
+<footer>
+    <p>Emma & Liam's Wedding | #EmmaAndLiam2026</p>
+</footer>
+
+<script>
+    // Countdown Timer
+    const weddingDate = new Date("July 15, 2026 16:00:00").getTime();
+    const timer = setInterval(function() {
+        const now = new Date().getTime();
+        const distance = weddingDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById("countdown").innerHTML = 
+            days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " Seconds ";
+
+        if (distance < 0) {
+            clearInterval(timer);
+            document.getElementById("countdown").innerHTML = "It's Wedding Time!";
+        }
+    }, 1000);
+</script>
+
+</body>
+</html>
