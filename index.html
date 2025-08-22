@@ -78,12 +78,28 @@
             background: #b94c67;
         }
 
+        /* Flexbox container for side-by-side sections */
+        .content-container {
+            display: flex;
+            flex-wrap: wrap; /* Allows sections to wrap on small screens */
+            justify-content: space-between;
+            gap: 20px;
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .content-container section {
+            flex: 1; /* Makes sections flexible and equal width */
+            min-width: 300px; /* Prevents sections from getting too small before wrapping */
+            padding: 20px;
+        }
+
         /* Photo Slideshow styles */
         #photo-slideshow {
             position: relative;
             width: 100%;
-            max-width: 600px; 
-            height: 400px; 
+            height: 100%; /* Fills the height of its parent section */
             margin: auto;
             overflow: hidden;
             border-radius: 10px;
@@ -92,12 +108,29 @@
         #slideshow-image {
             width: 100%;
             height: 100%;
-            object-fit: cover; 
+            object-fit: cover;
             opacity: 0;
             transition: opacity 1s ease-in-out;
         }
         #slideshow-image.visible {
             opacity: 1;
+        }
+
+        /* Responsive styles for iframe */
+        .iframe-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 75%; /* 4:3 Aspect Ratio (adjust as needed) */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .iframe-container iframe {
+            position: absolute;
+            top:0;
+            left: 0;
+            width: 100%;
+            height: 100%;
         }
 
         /* Footer */
@@ -124,28 +157,32 @@
 
 <section>
     <h2>Our Story</h2>
-    <p>We met in the most unexpected way... and here we are, ready to tie the knot! We can’t wait to celebrate this special ocassion with our closest friends and family.</p>
+    <p>We met in the most unexpected way... and here we are, ready to tie the knot! We can’t wait to celebrate this special occasion with our closest friends and family.</p>
 </section>
 
-<section>
-    <h2>Event Details</h2>
-    <p><strong>Date:</strong> Feb 19, 2026</p>
-    <p><strong>Venue:</strong> Kerala</p>
-    <p><strong>Time:</strong> Ceremony starts at 2:00 PM</p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d983.7184783409782!2d76.3552467285284!3d9.519682699407698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0884fa2eac59fb%3A0xca0799cc685a8bb6!2sPalmgrove%20Lake%20Resort!5e0!3m2!1sen!2sfr!4v1755351880452!5m2!1sen!2sfr" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-</section>
+<div class="content-container">
+    <section>
+        <h2>Event Details</h2>
+        <p><strong>Date:</strong> Feb 19, 2026</p>
+        <p><strong>Venue:</strong> Kerala</p>
+        <p><strong>Time:</strong> Ceremony starts at 2:00 PM</p>
+        <div class="iframe-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d983.7184783409782!2d76.3552467285284!3d9.519682699407698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0884fa2eac59fb%3A0xca0799cc685a8bb6!2sPalmgrove%20Lake%20Resort!5e0!3m2!1sen!2sfr!4v1755351880452!5m2!1sen!2sfr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+    <section>
+        <h2>Photos</h2>
+        <div id="photo-slideshow">
+            <img id="slideshow-image" src="" alt="Wedding photo slideshow">
+        </div>
+    </section>
+</div>
 
 <section>
     <h2>RSVP</h2>
     <p>Please let us know if you’ll be able to attend by filling out the form below:</p>
     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSemInS7D-cBgCs13zzkBErga0uFSegm38covmsPGZ-XES6zNw/viewform?usp=dialog" rel="stylesheet" width="100%" height="600" style="border:none;"></iframe>
-</section>
-
-<section>
-    <h2>Photos</h2>
-    <div id="photo-slideshow">
-        <img id="slideshow-image" src="" alt="Wedding photo slideshow">
-    </div>
 </section>
 
 <section>
@@ -211,14 +248,14 @@
             <strong>Try Toddy Tapping:</strong> Guests can get a taste of local life by visiting a toddy shop and seeing the traditional process of toddy tapping (collecting palm wine).
         </li>
     </ul>
-</section>    
+</section>
 <section>
     <h2>Gift Registry</h2>
     <p>Unfortunately, we can not carry gifts back to France. We are so grateful for your presence! </p>
 </section>
 
 <footer>
-    <p>Raj & Ailsa's Wedding | #RajAndAilsa2026| website updated: 22/8/25 v 1.8 </p>
+    <p>Raj & Ailsa's Wedding | #RajAndAilsa2026| website updated: 22/8/25 v 2.0 </p>
 </footer>
 
 <script>
@@ -233,7 +270,7 @@
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        document.getElementById("countdown").innerHTML = 
+        document.getElementById("countdown").innerHTML =
             days + " Days " + hours + " Hours " + minutes + " Minutes " + seconds + " Seconds ";
 
         if (distance < 0) {
@@ -244,7 +281,7 @@
 
     // Photo Slideshow Script
     const photoPaths = [
-        "1000066475.jpg", 
+        "1000066475.jpg",
         "1000070214.jpg"
         // "images/photo3.jpg",
         // "images/photo4.jpg",
@@ -261,10 +298,10 @@
             slideshowImage.src = photoPaths[currentPhotoIndex];
             slideshowImage.classList.add('visible');
             currentPhotoIndex = (currentPhotoIndex + 1) % photoPaths.length;
-        }, 1000); 
+        }, 1000);
     }
 
-    changePhoto(); 
+    changePhoto();
     setInterval(changePhoto, 5000);
 </script>
 
