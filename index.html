@@ -1,108 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Raj & Ailsa's Wedding</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raj & Ailsa's Wedding</title>
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
-<style>
-    body {
-        margin: 0;
-        font-family: 'Open Sans', sans-serif;
-        background-color: #fff8f9;
-        color: #444;
-        line-height: 1.6;
-    }
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #fff8f9;
+            color: #444;
+            line-height: 1.6;
+        }
 
-    header {
-        background: url('https://images.unsplash.com/photo-1529634820042-82f36a8e3391?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
-        color: white;
-        text-align: center;
-        padding: 80px 20px;
-        position: relative;
-    }
-    header::after {
-        content: "";
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(0,0,0,0.4);
-    }
-    header h1 {
-        font-family: 'Great Vibes', cursive;
-        font-size: 4em;
-        margin: 0;
-        position: relative;
-        z-index: 1;
-    }
-    header p {
-        font-size: 1.2em;
-        margin-top: 10px;
-        position: relative;
-        z-index: 1;
-    }
+        header {
+            background: url('https://images.unsplash.com/photo-1529634820042-82f36a8e3391?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 80px 20px;
+            position: relative;
+        }
+        header::after {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.4);
+        }
+        header h1 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4em;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+        header p {
+            font-size: 1.2em;
+            margin-top: 10px;
+            position: relative;
+            z-index: 1;
+        }
 
-    section {
-        padding: 50px 20px;
-        max-width: 900px;
-        margin: auto;
-    }
-    section h2 {
-        font-family: 'Great Vibes', cursive;
-        font-size: 2.5em;
-        color: #d46b82;
-        text-align: center;
-        margin-bottom: 20px;
-    }
+        section {
+            padding: 50px 20px;
+            max-width: 900px;
+            margin: auto;
+        }
+        section h2 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5em;
+            color: #d46b82;
+            text-align: center;
+            margin-bottom: 20px;
+        }
 
-    /* Countdown Timer */
-    #countdown {
-        font-size: 1.5em;
-        color: #d46b82;
-        text-align: center;
-        margin-bottom: 40px;
-    }
+        /* Countdown Timer */
+        #countdown {
+            font-size: 1.5em;
+            color: #d46b82;
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-    /* RSVP Button */
-    .button {
-        display: inline-block;
-        background: #d46b82;
-        color: white;
-        padding: 12px 25px;
-        border-radius: 8px;
-        text-decoration: none;
-        transition: background 0.3s ease;
-    }
-    .button:hover {
-        background: #b94c67;
-    }
+        /* RSVP Button */
+        .button {
+            display: inline-block;
+            background: #d46b82;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background 0.3s ease;
+        }
+        .button:hover {
+            background: #b94c67;
+        }
 
-    /* Gallery */
-    .gallery {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 15px;
-    }
-    .gallery img {
-        width: 100%;
-        border-radius: 10px;
-        transition: transform 0.3s ease;
-    }
-    .gallery img:hover {
-        transform: scale(1.05);
-    }
+        /* Photo Slideshow styles */
+        #photo-slideshow {
+            position: relative;
+            width: 100%;
+            max-width: 600px; 
+            height: 400px; 
+            margin: auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        #slideshow-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; 
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        #slideshow-image.visible {
+            opacity: 1;
+        }
 
-    /* Footer */
-    footer {
-        text-align: center;
-        background: #f28ca3;
-        color: white;
-        padding: 20px;
-        margin-top: 50px;
-    }
-</style>
+        /* Footer */
+        footer {
+            text-align: center;
+            background: #f28ca3;
+            color: white;
+            padding: 20px;
+            margin-top: 50px;
+        }
+    </style>
 </head>
 <body>
 
@@ -118,8 +124,7 @@
 
 <section>
     <h2>Our Story</h2>
-    <p>We met in the most unexpected way... and here we are, ready to tie the knot! 
-    We can’t wait to celebrate this special ocassion with our closest friends and family.</p>
+    <p>We met in the most unexpected way... and here we are, ready to tie the knot! We can’t wait to celebrate this special ocassion with our closest friends and family.</p>
 </section>
 
 <section>
@@ -133,16 +138,13 @@
 <section>
     <h2>RSVP</h2>
     <p>Please let us know if you’ll be able to attend by filling out the form below:</p>
-    <!-- Replace FORM_LINK_HERE with your actual Google Form embed link -->
     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSemInS7D-cBgCs13zzkBErga0uFSegm38covmsPGZ-XES6zNw/viewform?usp=dialog" rel="stylesheet" width="100%" height="600" style="border:none;"></iframe>
 </section>
 
 <section>
     <h2>Photos</h2>
-    <div class="gallery">
-<!--         <img src="https://images.unsplash.com/photo-1530023367847-a683933f4171?auto=format&fit=crop&w=800&q=80" alt="Engagement photo 1"> -->
-        <img src="1000070214.jpg" alt="1">
-        <img src="1000070214.jpg" alt="2">
+    <div id="photo-slideshow">
+        <img id="slideshow-image" src="" alt="Wedding photo slideshow">
     </div>
 </section>
 
@@ -162,30 +164,19 @@ Alleppey (also known as Alappuzha) in Kerala is a beautiful and unique destinati
 </p>
     <h2>Activities: <h2>
 <p> Here are some fun activities in and around Alleppey:
-
 Backwater Experiences (The Main Attraction)
 The backwaters are the heart of Alleppey. There are several ways for your guests to explore this stunning network of canals, lakes, and lagoons.
-
 Houseboat Cruise: This is the most iconic experience. Guests can book a houseboat (known as a kettuvallam) for a day cruise or an overnight stay. Houseboats are like floating hotels, with bedrooms, bathrooms, and a kitchen. They offer a luxurious and relaxing way to see the lush green scenery, paddy fields, and local village life.
-
 Shikara Boat Ride: For a more intimate and budget-friendly experience, a Shikara boat ride is a great option. These are smaller, traditional-style motorized canoe boats that can navigate the narrower canals, giving guests a closer look at the local life and hidden gems of the backwaters.
-
 Kayaking or Canoeing: For the more adventurous guests, a kayaking or canoeing tour allows for a peaceful and self-paced exploration of the waterways. This is a fantastic way to get some exercise and enjoy the tranquility of the backwaters.
-
 Beaches
 Alleppey and its surrounding area have some beautiful and less-crowded beaches.
-
 Alappuzha Beach: The main beach in town, it's known for its serene atmosphere, a historic 150-year-old pier, and an old lighthouse. It's a great spot to relax, watch the sunset, or try some local snacks.
-
 Marari Beach: Located about 11 km from Alleppey, this is a more tranquil and pristine beach. It's a perfect place for guests to unwind, enjoy the soft sand, and experience a more secluded coastal environment.
-
 Thumpoly Beach: A hidden gem, this beach is known for its scenic beauty and cleanliness. It's a great spot for bird watching, as many canals meet the Arabian Sea here.
-
 Cultural and Local Experiences
 Visit the Alappuzha Lighthouse: This historic lighthouse, built in 1862, is a landmark of the city. Guests can climb to the top for panoramic views of the beach and the town.
-
 Explore Local Life in Kuttanad: Known as the "Rice Bowl of Kerala," Kuttanad is a region with vast paddy fields that are cultivated below sea level. Your guests can take a village tour to see the unique agricultural methods, duck farms, and spice cultivations.
-
 See a Traditional Snake Boat: If your wedding coincides with the season (typically August and September), guests might be able to witness or learn about the famous snake boat races, like the Nehru Trophy Boat Race. Even if not, they can see a traditional snake boat at a boatyard.
 Go Temple and Church Hopping: Alleppey is a melting pot of cultures. Guests can visit a variety of ancient and beautiful places of worship, such as the Ambalappuzha Sree Krishna Temple, Mullakkal Rajarajeswari Temple, or St. Andrew's Basilica in Arthunkal.
 Visit the International Coir Museum: Alleppey is famous for its coir industry. Guests can learn about the process of making coir from coconut husks and see various handicrafts and products.
@@ -196,9 +187,6 @@ Try Toddy Tapping: Guests can get a taste of local life by visiting a toddy shop
 <section>
     <h2>Gift Registry</h2>
     <p>Unfortunately, we can not carry gifts back to France. We are so grateful for your presence! </p>
-<!--     <ul>
-        <li><a href="https://www.amazon.com" target="_blank">Amazon Registry</a></li>
-    </ul> -->
 </section>
 
 <footer>
@@ -225,6 +213,31 @@ Try Toddy Tapping: Guests can get a taste of local life by visiting a toddy shop
             document.getElementById("countdown").innerHTML = "It's Wedding Time!";
         }
     }, 1000);
+
+    // Photo Slideshow Script
+    const photoPaths = [
+        "images/photo1.jpg", 
+        "images/photo2.jpg",
+        "images/photo3.jpg",
+        "images/photo4.jpg",
+        "images/photo5.jpg"
+    ];
+
+    let currentPhotoIndex = 0;
+    const slideshowImage = document.getElementById("slideshow-image");
+
+    function changePhoto() {
+        slideshowImage.classList.remove('visible');
+
+        setTimeout(() => {
+            slideshowImage.src = photoPaths[currentPhotoIndex];
+            slideshowImage.classList.add('visible');
+            currentPhotoIndex = (currentPhotoIndex + 1) % photoPaths.length;
+        }, 1000); 
+    }
+
+    changePhoto(); 
+    setInterval(changePhoto, 5000);
 </script>
 
 </body>
