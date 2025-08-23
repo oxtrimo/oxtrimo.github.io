@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raj & Ailsa's Wedding</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
@@ -29,8 +29,10 @@
             top: 0; left: 0; right: 0; bottom: 0;
             background: rgba(0,0,0,0.4);
         }
+
+        /* Main heading */
         header h1 {
-            font-family: 'Great Vibes', cursive;
+            font-family: 'Playfair Display', serif;
             font-size: 4em;
             margin: 0;
             position: relative;
@@ -48,8 +50,10 @@
             max-width: 900px;
             margin: auto;
         }
+
+        /* All section headings */
         section h2 {
-            font-family: 'Great Vibes', cursive;
+            font-family: 'Playfair Display', serif;
             font-size: 2.5em;
             color: #d46b82;
             text-align: center;
@@ -95,25 +99,31 @@
             padding: 20px;
         }
 
-        /* Photo Slideshow styles - FIXED */
+        /* Fixed-size Photo Slideshow */
         #photo-slideshow {
             position: relative;
             width: 100%;
-            padding-top: 56.25%; /* 16:9 aspect ratio */
+            max-width: 800px; /* maximum frame width */
+            height: 450px; /* fixed height */
+            margin: auto;
             overflow: hidden;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #f0e6e8; /* soft background while images load */
         }
+
         #slideshow-image {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
+            top: 50%;
+            left: 50%;
+            width: auto;
             height: 100%;
-            object-fit: cover; /* keeps it stable, crops edges if needed */
+            transform: translate(-50%, -50%);
+            object-fit: contain; /* ensures image fits inside the frame */
             opacity: 0;
             transition: opacity 1s ease-in-out;
         }
+
         #slideshow-image.visible {
             opacity: 1;
         }
@@ -257,7 +267,7 @@
 </section>
 
 <footer>
-    <p>Raj & Ailsa's Wedding | #RajAndAilsa2026| website updated: 22/8/25 v 2.0 </p>
+    <p>Raj & Ailsa's Wedding | #RajAndAilsa2026 | website updated: 22/8/25 v 2.0 </p>
 </footer>
 
 <script>
