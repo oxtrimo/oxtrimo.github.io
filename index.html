@@ -45,6 +45,26 @@
             z-index: 1;
         }
 
+        /* Navigation Menu */
+        .navbar {
+            background-color: #d46b82;
+            overflow: hidden;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .navbar a {
+            display: inline-block;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
+        }
+        .navbar a:hover {
+            background-color: #b94c67;
+        }
+
         section {
             padding: 50px 20px;
             max-width: 900px;
@@ -77,6 +97,7 @@
             border-radius: 8px;
             text-decoration: none;
             transition: background 0.3s ease;
+            text-align: center;
         }
         .button:hover {
             background: #b94c67;
@@ -97,6 +118,8 @@
             flex: 1;
             min-width: 300px;
             padding: 20px;
+            background-color: #fcebeb;
+            border-radius: 10px;
         }
 
         /* Fixed-size Photo Slideshow */
@@ -162,18 +185,26 @@
     <p>Feb 19-20, 2026 · Kerala, India</p>
 </header>
 
-<section>
+<nav class="navbar">
+    <a href="#countdown-section">Countdown</a>
+    <a href="#details-section">Details</a>
+    <a href="#photos-section">Photos</a>
+    <a href="#rsvp-section">RSVP</a>
+    <a href="#activities-section">Activities</a>
+</nav>
+
+<section id="countdown-section">
     <h2>Countdown to Our Big Day</h2>
     <div id="countdown"></div>
 </section>
 
-<section>
-    <h2></h2>
+<section id="welcome-section">
+    <h2>Welcome</h2>
     <p>Here we are, ready to tie the knot! We can’t wait to celebrate this special occasion with our closest friends and family.</p>
 </section>
 
 <div class="content-container">
-    <section>
+    <section id="details-section">
         <h2>Event Details</h2>
         <p><strong>Date:</strong> Feb 19 - 20, 2026</p>
         <p><strong>Venue:</strong> Kerala</p>
@@ -183,7 +214,7 @@
         </div>
     </section>
 
-    <section>
+    <section id="photos-section">
         <h2>Photos</h2>
         <div id="photo-slideshow">
             <img id="slideshow-image" src="" alt="Wedding photo slideshow">
@@ -191,7 +222,7 @@
     </section>
 </div>
 
-<section>
+<section id="rsvp-section">
     <h2>RSVP</h2>
     <p>Please let us know if you’ll be able to attend by filling out the form below:</p>
     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSemInS7D-cBgCs13zzkBErga0uFSegm38covmsPGZ-XES6zNw/viewform?usp=dialog" rel="stylesheet" width="100%" height="600" style="border:none;"></iframe>
@@ -263,16 +294,16 @@
 </section>
 <section>
     <h2>Gift Registry</h2>
-    <p>Unfortunately, we can not carry gifts back to France. We are so grateful for your presence! </p>
+    <p>Unfortunately, we cannot carry gifts back to France. Your presence is the only gift we need! </p>
 </section>
 
 <footer>
-    <p>Raj & Ailsa's Wedding | #RajAndAilsa2026 | website updated: 22/8/25 v 2.0 </p>
+    <p>Raj & Ailsa's Wedding | #RajAndAilsa2026 | website updated: 24/8/25 v 2.2 </p>
 </footer>
 
 <script>
     // Countdown Timer
-    const weddingDate = new Date("Feb 19, 2026 14:00:00").getTime();
+    const weddingDate = new Date("2026-02-19T14:00:00").getTime();
     const timer = setInterval(function() {
         const now = new Date().getTime();
         const distance = weddingDate - now;
@@ -294,7 +325,7 @@
     // Photo Slideshow Script
     const photoPaths = [
         "1000066475.jpg",
-        "1000070214.jpg"
+        "1000070214.jpg",
         "1.jpg",
         "2.jpg",
         "4.jpg",
