@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Raj & Ailsa's Wedding</title>
 
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
@@ -170,62 +169,23 @@
             height: 100%;
         }
 
-        /* Video Slideshow */
-        #video-slideshow-container {
-            position: relative;
-            max-width: 800px;
-            margin: 30px auto;
-        }
-        .video-player-container {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            height: 0;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .video-player-container iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .video-title {
+        .video-list {
+            list-style: none;
+            padding: 0;
             text-align: center;
-            font-family: 'Playfair Display', serif;
+        }
+        .video-list li {
+            margin-bottom: 10px;
+        }
+        .video-list a {
+            font-size: 1.1em;
             color: #d46b82;
-            margin-top: 10px;
-            font-size: 1.5em;
-        }
-        .video-nav-btn {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: auto;
-            padding: 16px;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-            transition: background-color 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-            background-color: rgba(0,0,0,0.5);
             text-decoration: none;
-            z-index: 10;
+            transition: color 0.3s ease;
         }
-        .prev {
-            left: 0;
-            border-radius: 3px 0 0 3px;
-        }
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-        .video-nav-btn:hover {
-            background-color: rgba(0,0,0,0.8);
+        .video-list a:hover {
+            color: #b94c67;
+            text-decoration: underline;
         }
         
         /* Footer */
@@ -239,6 +199,7 @@
     </style>
 </head>
 <body>
+
 <header>
     <h1>Raj & Ailsa</h1>
     <p>Feb 19-20, 2026 · Kerala, India</p>
@@ -271,15 +232,16 @@
 
         <div class="iframe-container">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d983.7184783409782!2d76.3552467285284!3d9.519682699407698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0884fa2eac59fb%3A0xca0799cc685a8bb6!2sPalmgrove%20Lake%20Resort!5e0!3m2!1sen!2sfr!4v1755351880452!5m2!1sen!2sfr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        <h3>Videos of the Venue</h3>
-        <div id="video-slideshow-container">
-            <div class="video-player-container">
-                <iframe id="video-player" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div id="video-title" class="video-title"></div>
-            <a class="video-nav-btn prev" onclick="changeVideo(-1)">&#10094;</a>
-            <a class="video-nav-btn next" onclick="changeVideo(1)">&#10095;</a>
         </div>
+
+        <h3>Videos of the Venue</h3>
+        <p>Click on the links below to see videos of the beautiful resort and its surroundings!</p>
+        <ul class="video-list">
+            <li><a href="http://googleusercontent.com/youtube.com/16" target="_blank">Passion Fruit</a></li>
+            <li><a href="http://googleusercontent.com/youtube.com/17" target="_blank">Sunrise Experience - Canoe</a></li>
+            <li><a href="http://googleusercontent.com/youtube.com/18" target="_blank">Morning Lake</a></li>
+            <li><a href="http://googleusercontent.com/youtube.com/19" target="_blank">Palmgrove</a></li>
+        </ul>
     </section>
 
     <section id="photos-section">
@@ -306,7 +268,7 @@
     <p>We are planning fun events for you! Stay tuned. </p>
 </section>
 
-<section>
+<section id="activities-section">
     <h2>Activities:</h2>
     <p>Alleppey (also known as Alappuzha) in Kerala is a beautiful and unique destination, often called the "Venice of the East." It offers a perfect blend of serene backwaters, beautiful beaches, and rich cultural experiences, making it an excellent location for a wedding and a memorable trip for guests.</p>
 
@@ -397,7 +359,7 @@
         "1.jpg",
         "2.jpg",
         "4.jpg",
-        "6.jpg", 
+        "6.jpg",
         "7.jpg",
         "8.jpg",
         "9.jpg",
@@ -421,35 +383,6 @@
 
     changePhoto();
     setInterval(changePhoto, 5000);
-
-    // Video Slideshow Script
-    const videos = [
-        { url: "https://www.youtube.com/embed/M7z2j2D_c5A", title: "Passion Fruit" },
-        { url: "https://www.youtube.com/embed/V6sI5R_oBwU", title: "Sunrise Experience - Canoe" },
-        { url: "https://www.youtube.com/embed/0Qf9y5-rS9A", title: "Morning Lake" },
-        { url: "https://www.youtube.com/embed/D3eL83_N1lI", title: "Palmgrove" }
-    ];
-    let currentVideoIndex = 0;
-    const videoPlayer = document.getElementById("video-player");
-    const videoTitle = document.getElementById("video-title");
-
-    function updateVideo() {
-        videoPlayer.src = videos[currentVideoIndex].url;
-        videoTitle.textContent = videos[currentVideoIndex].title;
-    }
-
-    function changeVideo(direction) {
-        currentVideoIndex += direction;
-        if (currentVideoIndex < 0) {
-            currentVideoIndex = videos.length - 1;
-        } else if (currentVideoIndex >= videos.length) {
-            currentVideoIndex = 0;
-        }
-        updateVideo();
-    }
-
-    // Initial video load
-    updateVideo();
 </script>
 
 </body>
