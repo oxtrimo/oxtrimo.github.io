@@ -389,14 +389,20 @@
     slideshowImage.classList.add('visible');
 
     function changePhoto() {
+        // preload next image
+        const nextIndex = (currentPhotoIndex + 1) % photoPaths.length;
+        const nextImage = new Image();
+        nextImage.src = photoPaths[nextIndex];
+    
+        // fade out current image
         slideshowImage.classList.remove('visible');
-
+    
+        // after fade-out duration, switch src and fade in
         setTimeout(() => {
-            // move to next image
-            currentPhotoIndex = (currentPhotoIndex + 1) % photoPaths.length;
-            slideshowImage.src = photoPaths[currentPhotoIndex];
+            slideshowImage.src = photoPaths[nextIndex];
             slideshowImage.classList.add('visible');
-        }, 1000);
+            currentPhotoIndex = nextIndex;
+        }, 1000); // match your CSS transition duration
     }
 
     setInterval(changePhoto, 5000);
