@@ -15,53 +15,69 @@
             line-height: 1.6;
         }
 
+        /* HEADER WITH BACKGROUND IMAGE */
         header {
-            background: url('https://images.unsplash.com/photo-1529634820042-82f36a8e3391?auto=format&fit=crop&w=1400&q=80') center/cover no-repeat;
+            background: url('back.jpg') center/cover no-repeat;
             color: white;
             text-align: center;
-            padding: 80px 20px;
+            padding: 120px 20px;
             position: relative;
         }
         header::after {
             content: "";
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.35); /* dark overlay for readability */
+            z-index: 0;
         }
-
-        /* Main heading */
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            margin: auto;
+        }
         header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 4em;
+            font-size: 4.5em;
             margin: 0;
-            position: relative;
-            z-index: 1;
+            line-height: 1.2;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+            color: #fff;
         }
         header p {
-            font-size: 1.2em;
-            margin-top: 10px;
-            position: relative;
-            z-index: 1;
+            font-size: 1.4em;
+            margin-top: 15px;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
+            color: #f8f8f8;
+        }
+        @media (max-width: 600px) {
+            header h1 { font-size: 2.8em; }
+            header p { font-size: 1.1em; }
         }
 
-        /* Navigation Menu */
+        /* NAVBAR */
         .navbar {
-            background-color: #d46b82;
+            background: rgba(212, 107, 130, 0.95); /* translucent pink */
+            backdrop-filter: blur(6px); /* elegant blur over image */
             overflow: hidden;
             text-align: center;
             padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
         .navbar a {
             display: inline-block;
             color: white;
-            text-align: center;
             padding: 14px 20px;
             text-decoration: none;
             font-size: 1.1em;
-            transition: background-color 0.3s;
+            font-weight: 600;
+            transition: background-color 0.3s, color 0.3s;
         }
         .navbar a:hover {
-            background-color: #b94c67;
+            background-color: rgba(185, 76, 103, 0.9);
+            color: #fff8f9;
         }
 
         section {
@@ -175,9 +191,7 @@
             padding: 0;
             text-align: center;
         }
-        .video-list li {
-            margin-bottom: 10px;
-        }
+        .video-list li { margin-bottom: 10px; }
         .video-list a {
             font-size: 1.1em;
             color: #d46b82;
@@ -202,8 +216,10 @@
 <body>
 
 <header>
-    <h1>Raj & Ailsa</h1>
-    <p>Feb 19-20, 2026 · Kerala, India</p>
+    <div class="header-content">
+        <h1>Raj & Ailsa</h1>
+        <p>Feb 19-20, 2026 · Kerala, India</p>
+    </div>
 </header>
 
 <nav class="navbar">
@@ -229,14 +245,13 @@
         <h2>Event Details</h2>
         <p><strong>Date:</strong> Feb 19 - 20, 2026</p>
         <p><strong>Time:</strong> Ceremony starts at Noon</p>
-        <p><strong>Venue:</strong> Our wedding will take place at the beautiful Palmgrove lake resort <a href="https://www.palmgrovelakeresort.com/">Palmgrove Lake Resort</a> in Kerala. For more information about the resort, including accommodation and amenities, please visit their website. </p>
+        <p><strong>Venue:</strong> Our wedding will take place at the beautiful <a href="https://www.palmgrovelakeresort.com/">Palmgrove Lake Resort</a> in Kerala. For more information about the resort, including accommodation and amenities, please visit their website. </p>
 
         <div class="iframe-container">
             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d983.7184783409782!2d76.3552467285284!3d9.519682699407698!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0884fa2eac59fb%3A0xca0799cc685a8bb6!2sPalmgrove%20Lake%20Resort!5e0!3m2!1sen!2sfr!4v1755351880452!5m2!1sen!2sfr" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
         <h3>Videos of the Venue</h3>
-        <p>Click on the links below to see videos of the beautiful resort and its surroundings!</p>
         <ul class="video-list">
             <li><a href="https://www.youtube.com/watch?v=0FppfN4LKOA" target="_blank">Passion Fruit</a></li>
             <li><a href="https://www.youtube.com/watch?v=ucu2lM-qbME" target="_blank">Sunrise Experience - Canoe</a></li>
